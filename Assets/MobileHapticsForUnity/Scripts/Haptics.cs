@@ -1,6 +1,5 @@
-﻿
 using UnityEngine;
-#if UNITY_IOS
+﻿#if UNITY_IOS
 using System.Runtime.InteropServices;
 #endif
 
@@ -18,6 +17,12 @@ namespace MobileHapticsForUnity
 #if UNITY_IOS
         [DllImport ("__Internal")]
         static extern void impact(int style);
+#elif UNITY_ANDROID
+        // Include in build to enable vibration permission for AndroidManifest.xml
+        static void SetupAndroidManifest()
+        {
+            Handheld.Vibrate();
+        }
 #endif
 
         public static void Impact(ImpactFeedbackStyle style = ImpactFeedbackStyle.Light)

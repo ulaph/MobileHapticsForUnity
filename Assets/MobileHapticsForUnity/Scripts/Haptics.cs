@@ -17,6 +17,9 @@ namespace MobileHapticsForUnity
 #if UNITY_IOS
         [DllImport ("__Internal")]
         static extern void impact(int style);
+        
+        [DllImport ("__Internal")]
+        static extern void impactWith(float intensity, float sharpness, float duration, float sustained);
 #elif UNITY_ANDROID
         // Include in build to enable vibration permission for AndroidManifest.xml
         static void SetupAndroidManifest()
@@ -52,6 +55,17 @@ namespace MobileHapticsForUnity
                     vibrator.Call("vibrate", milliseconds);
                 }
             }
+#endif
+        }
+
+        public static void Impact(float intensity, float sharpness, float duration, float sustained)
+        {
+#if UNITY_EDITOR
+            Debug.Log($"impact intensity: {intensity}, sharpness: {sharpness}, duration: {duration}, sustained: {sustained}");
+#elif UNITY_IOS
+            impactWith(intensity, sharpness, duration, sustained);
+#elif UNITY_ANDROID
+            // TODO
 #endif
         }
     }

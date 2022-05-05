@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MobileHapticsForUnity/Samples/HapticsImpactSample/SampleScene.unity
+    guid: a2a8bb1fc5ccc45f598c9fd3882671f6
   m_configObjects: {}
